@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DatashareService} from '../datashare.service';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
-  constructor() {}
+  message: any;
+  constructor( private sharedService: DatashareService) 
+  { }
+  ngOnInit() 
+  {this.sharedService.sharedMessage.subscribe(message => this.message= message);  }
+  newMessage() 
+  {this.sharedService.setMessage(this.message);  }
 
 }
