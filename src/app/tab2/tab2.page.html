@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 2
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button [routerLink]="['/page1','this is the data']"> Page1</ion-button>
+  <ion-button (click)="goPage2()">Page 2</ion-button>
+
+</ion-content>
