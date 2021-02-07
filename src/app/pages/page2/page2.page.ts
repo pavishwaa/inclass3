@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { DatashareService} from '../../datashare.service';
 
 @Component({
   selector: 'app-page2',
@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 export class Page2Page implements OnInit {
 
   data: any;
-  constructor( private router: Router) { 
+  message: any;
+
+  constructor( private router: Router, private sharedService: DatashareService) 
+
+  {
     if (this.router.getCurrentNavigation().extras.state)
     {
       this.data = this.router.getCurrentNavigation().extras.state.myData;
@@ -20,6 +24,7 @@ export class Page2Page implements OnInit {
   }
 
   ngOnInit() {
+    this.sharedService.sharedMessage.subscribe(
+      message => this.message = message);
   }
-
 }
